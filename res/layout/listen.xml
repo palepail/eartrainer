@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent" android:layout_height="fill_parent"
+	android:background="#ffffffff" android:orientation="vertical"
+	android:id="@+id/linearLayout1">
+	<FrameLayout android:layout_height="wrap_content"
+		android:layout_width="match_parent" android:id="@+id/frameLayout1">
+		<HorizontalScrollView android:id="@+id/horizontalScrollView1"
+			android:layout_height="wrap_content" android:layout_width="wrap_content">
+			<RelativeLayout android:layout_width="match_parent"
+				android:id="@+id/relativeLayout1" android:layout_height="wrap_content">
+				<ImageView android:scaleType="fitStart" android:id="@+id/imageView1"
+					android:layout_width="wrap_content" android:layout_height="wrap_content"
+					android:src="@drawable/scale"></ImageView>
+				<Button android:onClick="playNote" android:background="@android:color/transparent"
+					android:id="@+id/button1" android:layout_width="wrap_content"
+					android:textColor="@android:color/transparent"
+					android:layout_height="wrap_content" android:layout_marginLeft="160dip"
+					android:height="80dip" android:layout_marginTop="77dip"
+					android:text="0" android:width="40dip"></Button>
+				<Button android:onClick="playNote" android:background="@android:color/transparent"
+					android:id="@+id/button2" android:layout_width="wrap_content"
+					android:textColor="@android:color/transparent"
+					android:layout_height="wrap_content" android:layout_marginLeft="235dip"
+					android:height="80dip" android:layout_marginTop="70dip"
+					android:text="1" android:width="40dip"></Button>
+				<Button android:onClick="playNote" android:background="@android:color/transparent"
+					android:id="@+id/button3" android:layout_width="wrap_content"
+					android:textColor="@android:color/transparent"
+					android:layout_height="wrap_content" android:layout_marginLeft="313dip"
+					android:height="80dip" android:layout_marginTop="58dip"
+					android:text="2" android:width="40dip"></Button>
+				<Button android:onClick="playNote" android:background="@android:color/transparent"
+					android:id="@+id/button4" android:layout_width="wrap_content"
+					android:textColor="@android:color/transparent"
+					android:layout_height="wrap_content" android:layout_marginLeft="388dip"
+					android:height="80dip" android:layout_marginTop="50dip"
+					android:text="3" android:width="40dip"></Button>
+				<Button android:onClick="playNote" android:background="@android:color/transparent"
+					android:id="@+id/button5" android:layout_width="wrap_content"
+					android:textColor="@android:color/transparent"
+					android:layout_height="wrap_content" android:layout_marginLeft="492dip"
+					android:height="80dip" android:layout_marginTop="40dip"
+					android:text="4" android:width="40dip"></Button>
+				<Button android:onClick="playNote" android:background="@android:color/transparent"
+					android:id="@+id/button6" android:layout_width="wrap_content"
+					android:textColor="@android:color/transparent"
+					android:layout_height="wrap_content" android:layout_marginLeft="567dip"
+					android:height="80dip" android:layout_marginTop="30dip"
+					android:text="5" android:width="40dip"></Button>
+				<Button android:onClick="playNote" android:background="@android:color/transparent"
+					android:id="@+id/button7" android:layout_width="wrap_content"
+					android:textColor="@android:color/transparent"
+					android:layout_height="wrap_content" android:layout_marginLeft="642dip"
+					android:height="80dip" android:layout_marginTop="75dip"
+					android:text="6" android:width="40dip"></Button>
+				<Button android:onClick="playNote" android:background="@android:color/transparent"
+					android:id="@+id/button8" android:layout_width="wrap_content"
+					android:textColor="@android:color/transparent"
+					android:layout_height="wrap_content" android:layout_marginLeft="717dip"
+					android:height="80dip" android:layout_marginTop="65dip"
+					android:text="7" android:width="40dip"></Button>
+				<Button android:onClick="playNote" android:background="@android:color/transparent"
+					android:id="@+id/button9" android:layout_width="wrap_content"
+					android:textColor="@android:color/transparent"
+					android:layout_height="wrap_content" android:layout_marginLeft="823dip"
+					android:height="80dip" android:layout_marginTop="57dip"
+					android:text="8" android:width="40dip"></Button>
+				<Button android:onClick="playNote" android:background="@android:color/transparent"
+					android:id="@+id/button10" android:layout_width="wrap_content"
+					android:textColor="@android:color/transparent"
+					android:layout_height="wrap_content" android:layout_marginLeft="898dip"
+					android:height="80dip" android:layout_marginTop="49dip"
+					android:text="9" android:width="40dip"></Button>
+				<Button android:onClick="playNote" android:background="@android:color/transparent"
+					android:id="@+id/button11" android:layout_width="wrap_content"
+					android:textColor="@android:color/transparent"
+					android:layout_height="wrap_content" android:layout_marginLeft="975dip"
+					android:height="80dip" android:layout_marginTop="39dip"
+					android:text="10" android:width="40dip"></Button>
+				<Button android:onClick="playNote" android:background="@android:color/transparent"
+					android:id="@+id/button12" android:layout_width="wrap_content"
+					android:textColor="@android:color/transparent"
+					android:layout_height="wrap_content" android:layout_marginLeft="1053dip"
+					android:height="80dip" android:layout_marginTop="30dip"
+					android:text="11" android:width="40dip"></Button>
+				<Button android:onClick="playNote" android:background="@android:color/transparent"
+					android:id="@+id/button13" android:layout_width="wrap_content"
+					android:textColor="@android:color/transparent"
+					android:layout_height="wrap_content" android:layout_marginLeft="1155dip"
+					android:height="80dip" android:layout_marginTop="20dip"
+					android:text="12" android:width="40dip"></Button>
+				<Button android:onClick="playNote" android:background="@android:color/transparent"
+					android:id="@+id/button14" android:layout_width="wrap_content"
+					android:textColor="@android:color/transparent"
+					android:layout_height="wrap_content" android:layout_marginLeft="1230dip"
+					android:height="80dip" android:layout_marginTop="10dip"
+					android:text="13" android:width="40dip"></Button>
+				<Button android:onClick="playNote" android:background="@android:color/transparent"
+					android:id="@+id/button15" android:layout_width="wrap_content"
+					android:textColor="@android:color/transparent"
+					android:layout_height="wrap_content" android:layout_marginLeft="1307dip"
+					android:height="80dip" android:layout_marginTop="2dip"
+					android:text="14" android:width="40dip"></Button>
+			</RelativeLayout>
+		</HorizontalScrollView>
+
+		<TextView android:visibility="visible"
+			android:layout_gravity="center|top" android:textColor="#000"
+			android:layout_width="wrap_content" android:layout_height="wrap_content"                         
+			android:text="" android:id="@+id/textView3"></TextView>
+	</FrameLayout>
+</LinearLayout>

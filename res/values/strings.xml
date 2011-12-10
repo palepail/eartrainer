@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string-array name="instrument_array">
+        <item>Piano</item>
+        <item>Violin</item>
+        <item>Guitar</item>
+        <item>Trumpet</item>
+    </string-array>
+    <string-array name="bass_instrument_array">
+        <item>Piano</item>
+        <item>Cello</item>
+    </string-array>
+    <string-array name="timer_array">
+        <item>2 Seconds</item>
+        <item>5 Seconds</item>
+        <item>7 Seconds</item>
+        <item>10 Seconds</item>
+        <item>15 Seconds</item>
+    </string-array>
+    <string-array name="clef_array">
+        <item>Treble</item>
+        <item>Bass</item>
+    </string-array>
+
+	<string name="app_name">EarTrainer</string>
+	<string name="notes">Number of Notes</string>
+	<string name="mode">Mode</string>
+	<string name="about">About</string>
+	<string name="instrument">Instrument</string>
+	<string name="instructions">Instructions</string>
+	<string name="options">Options</string>
+	<string name="timer">Timed Mode</string>
+	<string name="time">Set Timer</string>
+<!--  	<string name="statistics">Statistics</string> -->
+  <!--  <string name="user">User</string> -->	
+</resources>

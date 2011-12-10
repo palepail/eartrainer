@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical" android:layout_width="fill_parent"
+	android:layout_height="fill_parent" android:background="#ffffffff"
+	android:id="@+id/linearLayout1">
+	<FrameLayout android:id="@+id/frameLayout1"
+		android:layout_height="wrap_content" android:layout_width="match_parent">
+		<HorizontalScrollView android:layout_height="wrap_content"
+			android:id="@+id/horizontalScrollView1" android:layout_width="wrap_content">
+			<RelativeLayout android:layout_height="wrap_content"
+				android:layout_width="match_parent" android:id="@+id/relativeLayout1">
+				<ImageView android:src="@drawable/blankmeasure"
+					android:id="@+id/imageView1" android:scaleType="fitStart"
+					android:layout_width="wrap_content" android:layout_height="wrap_content"></ImageView>
+				<ImageView android:paddingLeft="152dip" android:src="@drawable/lc"
+					android:id="@+id/imageView2" android:scaleType="fitStart"
+					android:layout_width="wrap_content" android:layout_height="wrap_content"></ImageView>
+				<ImageView android:src="@drawable/qr" android:id="@+id/imageView3"
+					android:layout_width="wrap_content" android:layout_height="wrap_content"
+					android:layout_toRightOf="@+id/imageView2" android:paddingLeft="20dip"></ImageView>
+				<ImageView android:src="@drawable/qr" android:id="@+id/imageView4"
+					android:layout_width="wrap_content" android:layout_height="wrap_content"
+					android:layout_toRightOf="@+id/imageView3" android:paddingLeft="20dip"></ImageView>
+				<ImageView android:src="@drawable/qr" android:id="@+id/imageView5"
+					android:layout_width="wrap_content" android:layout_height="wrap_content"
+					android:layout_toRightOf="@+id/imageView4" android:paddingLeft="20dip"></ImageView>
+				<Button android:paddingLeft="152dip" android:onClick="play"
+					android:layout_height="140dip" android:layout_marginLeft="152dip"
+					android:text="Play" android:id="@+id/button2" android:layout_width="60dip"
+					android:textColor="@android:color/transparent" android:background="@android:color/transparent"></Button>
+			</RelativeLayout>
+		</HorizontalScrollView>
+		<TextView android:text="" android:id="@+id/textView2"
+			android:layout_width="wrap_content" android:layout_height="wrap_content"
+			android:textColor="#000"></TextView>
+		<TextView android:text="Streak = 0" android:layout_height="wrap_content"
+			android:layout_width="wrap_content" android:textColor="#000"
+			android:id="@+id/textView1" android:layout_gravity="left|top"></TextView>
+			                                                                                           <!-- Name -->
+		<TextView android:text="" android:layout_height="wrap_content"                       
+			android:layout_width="wrap_content" android:textColor="#000"
+			android:id="@+id/textView3" android:layout_gravity="center|top"></TextView>
+			
+		<RadioGroup android:id="@+id/radioGroup1"
+			android:orientation="horizontal" android:layout_width="wrap_content"
+			android:layout_height="wrap_content" android:gravity="bottom"
+			android:layout_gravity="center_horizontal|bottom">
+			<RadioButton android:layout_width="wrap_content"
+				android:id="@+id/radio0" android:text="A" android:layout_height="wrap_content"
+				android:textColor="#000" android:checked="false"></RadioButton>
+			<RadioButton android:layout_width="wrap_content"
+				android:id="@+id/radio1" android:text="B" android:layout_height="wrap_content"
+				android:textColor="#000"></RadioButton>
+			<RadioButton android:layout_width="wrap_content"
+				android:id="@+id/radio2" android:text="C" android:layout_height="wrap_content"
+				android:textColor="#000"></RadioButton>
+			<RadioButton android:layout_width="wrap_content"
+				android:id="@+id/radio3" android:text="D" android:layout_height="wrap_content"
+				android:textColor="#000"></RadioButton>
+			<RadioButton android:layout_width="wrap_content"
+				android:id="@+id/radio4" android:text="E" android:layout_height="wrap_content"
+				android:textColor="#000"></RadioButton>
+			<RadioButton android:layout_width="wrap_content"
+				android:id="@+id/radio5" android:text="F" android:layout_height="wrap_content"
+				android:textColor="#000"></RadioButton>
+			<RadioButton android:layout_width="wrap_content"
+				android:id="@+id/radio6" android:text="G" android:layout_height="wrap_content"
+				android:textColor="#000"></RadioButton>
+		</RadioGroup>
+	</FrameLayout>
+</LinearLayout>

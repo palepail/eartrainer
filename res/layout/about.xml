@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent" android:layout_height="fill_parent"
+	android:background="#ffffffff" android:id="@+id/relativeLayout1"
+	android:orientation="vertical">
+	<TextView android:text="About" android:id="@+id/textView1"
+		android:layout_width="wrap_content" android:layout_height="wrap_content"
+		android:gravity="center" android:layout_gravity="center|top"
+		android:layout_marginTop="15dip" android:textSize="30dip"
+		android:textColor="#000" android:layout_centerHorizontal="true"></TextView>
+	<ScrollView android:layout_width="wrap_content"
+		android:layout_height="wrap_content" android:id="@+id/scrollView1"
+		android:layout_marginTop="60dip">
+		<RelativeLayout android:layout_height="match_parent"
+			android:layout_width="match_parent" android:id="@+id/relativeLayout">
+			<Button android:text="aboutStretch" android:layout_width="0dip"
+				android:layout_alignBottom="@+id/textView2"
+				android:layout_alignParentLeft="false" android:id="@+id/optionStretch"
+				android:layout_alignParentRight="true" android:layout_height="wrap_content"></Button>
+			<Button android:text="aboutnAnchor" android:layout_width="0dip"
+				android:layout_alignBottom="@+id/textView2" android:id="@+id/optionAnchor"
+				android:layout_height="wrap_content"
+				android:layout_centerHorizontal="true"></Button>
+			<Button android:text="Ear Trainer" android:layout_width="wrap_content"
+				android:id="@+id/aboutEarTrainer" android:layout_height="wrap_content"
+				android:layout_centerHorizontal="true" android:background="@android:color/transparent"
+				android:textSize="20dip" android:layout_marginTop="30dip" android:onClick="buttonPressed"></Button>
+			<Button android:text="Practice" android:layout_width="wrap_content"
+				android:id="@+id/aboutPractice" android:layout_height="wrap_content"
+				android:layout_centerHorizontal="true" android:layout_below="@+id/aboutEarTrainer"
+				android:background="@android:color/transparent" android:textSize="20dip" android:layout_marginTop="30dip" android:onClick="buttonPressed"></Button>
+			<Button android:text="Reading Quiz" android:layout_width="wrap_content"
+				android:id="@+id/aboutRQuiz" android:layout_height="wrap_content"
+				android:layout_centerHorizontal="true" android:layout_below="@+id/aboutPractice"
+				android:background="@android:color/transparent" android:textSize="20dip" android:layout_marginTop="30dip" android:onClick="buttonPressed"></Button>
+			<Button android:text="Listening Quiz" android:layout_width="wrap_content"
+				android:id="@+id/aboutLQuiz" android:layout_height="wrap_content"
+				android:layout_centerHorizontal="true" android:layout_below="@+id/aboutRQuiz"
+				android:background="@android:color/transparent" android:textSize="20dip" android:layout_marginTop="30dip" android:onClick="buttonPressed"></Button>
+			<Button android:text="Back" android:layout_width="100dip"
+				android:layout_marginTop="300dip" android:id="@+id/back"
+				android:background="@android:color/transparent"
+				android:layout_marginLeft="60dip" android:layout_toRightOf="@+id/optionAnchor"
+				android:layout_height="wrap_content" android:onClick="buttonPressed"
+				android:textSize="20dip"></Button>
+
+		</RelativeLayout>
+	</ScrollView>
+
+</RelativeLayout>
