@@ -97,7 +97,11 @@ public class AboutController extends Activity {
 		}
 
 	}
-
+	
+	public void version(View v) {
+		utilities.aboutVersion(this);
+	}
+	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		MenuInflater inflater = getMenuInflater();

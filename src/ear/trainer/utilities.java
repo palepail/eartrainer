@@ -147,7 +147,7 @@ public class utilities extends Activity {
 		AlertDialog.Builder builder = new AlertDialog.Builder(context);
 		builder.setTitle("About Version 1.11");
 		builder.setMessage(
-				"Version 1.11 sees the introduction of measures in Ear Trainer. By selecting 1 Measure in teh options menu," +
+				"Version 1.11 sees the introduction of measures in Ear Trainer. By selecting 1 Measure in the options menu," +
 				"the use must correctly identify 4 notes in order to get the question correct. The notes currently selected are" +
 				"displayed in the top right corner of the screen.")
 				.setCancelable(false)
