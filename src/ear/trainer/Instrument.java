@@ -12,7 +12,7 @@ public class Instrument {
 	public void playNote(Context context, int note) throws Exception {
 		String instrument = OptionController.getInstrument();
 
-		String noteString = Integer.toString(findOctave(note)) + findNote(note);
+		String noteString = Integer.toString(findOctave(note)) + utilities.getNoteLet(note);
 
 		AssetFileDescriptor afd = context.getAssets().openFd(
 				"Sounds/" + instrument + "_" + noteString + ".mp3");
@@ -27,36 +27,6 @@ public class Instrument {
 		player.prepare();
 		player.start();
 
-	}
-
-	public static String findNote(int noteNum) {
-		int note = noteNum % 7;
-		String noteLet = "?";
-
-		switch (note) {
-		case 0:
-			noteLet = "C";
-			break;
-		case 1:
-			noteLet = "D";
-			break;
-		case 2:
-			noteLet = "E";
-			break;
-		case 3:
-			noteLet = "F";
-			break;
-		case 4:
-			noteLet = "G";
-			break;
-		case 5:
-			noteLet = "A";
-			break;
-		case 6:
-			noteLet = "B";
-		}
-
-		return noteLet;
 	}
 
 	public static int findOctave(int noteNum) {

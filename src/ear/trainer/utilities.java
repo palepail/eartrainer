@@ -115,7 +115,8 @@ public class utilities extends Activity {
 		builder.setMessage(
 				"The Listening Quiz mode is where you can test yourself "
 						+ "at picking whole notes out by ear. To listen to the note press the '?,' "
-						+ "then choose the note played from the 7 options.")
+						+ "then choose the note played from the 7 options. The result sound is disabled"
+						+ "in this mode. In timed mode the note to be answered will be played automatically.")
 				.setCancelable(false)
 				.setNeutralButton("OK", new DialogInterface.OnClickListener() {
 					public void onClick(DialogInterface dialog, int id) {
@@ -134,6 +135,21 @@ public class utilities extends Activity {
 						+ "what notes go where and what the sound like. Press a note ont he measure "
 						+ "to listen to it and view what not it is. "
 						+ "You can scroll horizontally to view more notes.")
+				.setCancelable(false)
+				.setNeutralButton("OK", new DialogInterface.OnClickListener() {
+					public void onClick(DialogInterface dialog, int id) {
+						dialog.cancel();
+					}
+				});
+		builder.show();
+	}
+	public static void aboutVersion(Context context) {
+		AlertDialog.Builder builder = new AlertDialog.Builder(context);
+		builder.setTitle("About Version 1.11");
+		builder.setMessage(
+				"Version 1.11 sees the introduction of measures in Ear Trainer. By selecting 1 Measure in teh options menu," +
+				"the use must correctly identify 4 notes in order to get the question correct. The notes currently selected are" +
+				"displayed in the top right corner of the screen.")
 				.setCancelable(false)
 				.setNeutralButton("OK", new DialogInterface.OnClickListener() {
 					public void onClick(DialogInterface dialog, int id) {
@@ -227,6 +243,72 @@ public class utilities extends Activity {
 
 	// START METHODS
 	// ========================================================================================
+	public static int getNoteNum(char charNote) {
+		// TODO Auto-generated method stub
+		int noteNum;
+		switch (charNote) {
+		case 'C':
+			noteNum = 0;
+			break;
+		case 'D':
+			noteNum = 1;
+			break;
+		case 'E':
+			noteNum = 2;
+			break;
+		case 'F':
+			noteNum = 3;
+			break;
+		case 'G':
+			noteNum = 4;
+			break;
+		case 'A':
+			noteNum = 5;
+			break;
+		case 'B':
+			noteNum = 6;
+			break;
+		default:
+			noteNum = 0;
+			break;
+		}
+		return noteNum;
+
+	}
+
+	public static String getNoteLet(int charNum) {
+		String noteLet;
+		int Num = charNum % 7;
+		switch (Num) {
+		case 0:
+			noteLet = "C";
+			break;
+		case 1:
+			noteLet = "D";
+			break;
+		case 2:
+			noteLet = "E";
+			break;
+		case 3:
+			noteLet = "F";
+			break;
+		case 4:
+			noteLet = "G";
+			break;
+		case 5:
+			noteLet = "A";
+			break;
+		case 6:
+			noteLet = "B";
+			break;
+		default:
+			noteLet = "C";
+			break;
+		}
+		return noteLet;
+
+	}
+
 	public static void goToRQuiz(Context context) {
 		Intent intent = new Intent(Intent.ACTION_VIEW);
 		intent.setClassName(context, RQuizController.class.getName());

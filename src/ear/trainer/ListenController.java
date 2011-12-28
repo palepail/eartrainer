@@ -5,7 +5,6 @@ import android.content.Context;
 import android.media.AudioManager;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -13,9 +12,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.Toast;
-import com.google.ads.*;
+
 
 public class ListenController extends Activity {
 	private AudioManager audio;
@@ -89,7 +87,7 @@ public class ListenController extends Activity {
 	public void playNote(View v) throws Exception {
 		int noteNum = (int) Integer.parseInt((String) ((Button) v).getText());
 
-		Toast.makeText(this, Instrument.findNote(noteNum), Toast.LENGTH_SHORT)
+		Toast.makeText(this, utilities.getNoteLet(noteNum), Toast.LENGTH_SHORT)
 				.show();
 		Instrument player = new Instrument();
 		player.playNote(this, noteNum);

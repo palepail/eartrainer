@@ -9,7 +9,7 @@
 		android:layout_marginTop="30dip" android:textSize="30dip"
 		android:textColor="#000" android:layout_centerHorizontal="true"></TextView>
 	<TextView android:layout_width="wrap_content" android:id="@+id/textView2"
-		android:layout_height="wrap_content" android:text="Version 1.10"
+		android:layout_height="wrap_content" android:text="@string/about"
 		android:layout_below="@+id/textView1" android:layout_centerHorizontal="true"
 		android:textColor="#000"></TextView>
 	<TextView android:layout_width="wrap_content" android:id="@+id/textView3"

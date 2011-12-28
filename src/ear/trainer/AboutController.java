@@ -68,6 +68,8 @@ public class AboutController extends Activity {
 		aboutP.setTypeface(font);
 		Button aboutRQ = (Button) findViewById(R.id.aboutRQuiz);
 		aboutRQ.setTypeface(font);
+		Button aboutVs = (Button) findViewById(R.id.aboutVersion);
+		aboutVs.setTypeface(font);
 		Button back = (Button) findViewById(R.id.back);
 		back.setTypeface(font);
 

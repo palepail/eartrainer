@@ -30,7 +30,6 @@ public class LQuizController extends Activity implements
 	private AudioManager audio;
 	private int radioNote;
 	private int score = 0;
-	private int manyNotes = 1;
 	private int[] answerKey = new int[10];
 	private int[] playerAnswer = new int[10];
 	private int counter = 0;
@@ -48,7 +47,7 @@ public class LQuizController extends Activity implements
 
 		public void onFinish() {
 			try {
-				submit(true);
+				end(true);
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -150,6 +149,9 @@ public class LQuizController extends Activity implements
 		ImageView iv5 = (ImageView) findViewById(R.id.imageView5);
 		TextView tv = (TextView) findViewById(R.id.textView1);
 		tv.setText("Streak = " + score);
+		TextView tv1 = (TextView) findViewById(R.id.textView2);
+		tv1.setText("");
+
 
 		/*
 		 * TextView tv1 = (TextView) findViewById(R.id.textView2);
@@ -159,7 +161,7 @@ public class LQuizController extends Activity implements
 			answerKey[i] = 0;
 			playerAnswer[i] = 99;
 		}
-		switch (manyNotes) {
+		switch (OptionController.getnumNotes()) {
 		case 1:
 			changeNote(iv2, generateRandom(), 0);
 			iv2.setImageResource(R.drawable.nani);
@@ -212,7 +214,7 @@ public class LQuizController extends Activity implements
 
 				public void onFinish() {
 					try {
-						submit(true);
+						end(true);
 					} catch (Exception e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
@@ -236,77 +238,106 @@ public class LQuizController extends Activity implements
 	}
 
 	public void submit(boolean force) throws Exception {
-		boolean win = true;
 		playerAnswer[counter] = radioNote;
+		if (OptionController.getnumNotes()!=1)
+		{
+			TextView tv = (TextView) findViewById(R.id.textView2); 
+			String answerString = (String) tv.getText();
+			answerString += utilities.getNoteLet(radioNote) +", ";
+			tv.setText(answerString);
+		}
+		RadioGroup radio = (RadioGroup) findViewById(R.id.radioGroup1);
+		radio.clearCheck();
 		counter++;
-		/*
-		 * TextView tv = (TextView) findViewById(R.id.textView2); answerString
-		 * += radioNote + " "; tv.setText(answerString);
-		 */
+
+		if (OptionController.getTimerMode() == true) {
+			playNote(answerKey[counter]);
+		}
+
+		if (counter >= OptionController.getnumNotes()) {
+			end(force);
+		}
+
+	}
+
+	private void end(boolean force) throws Exception {
+		// TODO Auto-generated method stub
+		boolean win=true;
 		if (OptionController.getTimerMode() == true) {
 			timer.cancel();
 		}
+		for (int i = 0; i < OptionController.getnumNotes(); i++) {
+			if (utilities.getNoteLet(answerKey[i]).equals(
+					utilities.getNoteLet(playerAnswer[i]))) {
+				win = true;
 
-		if (counter >= manyNotes) {
-			for (int i = 0; i < manyNotes; i++) {
-				if (Instrument.findNote(answerKey[i]).equals(
-						Instrument.findNote(playerAnswer[i]))) {
-					// playAnswer("win");
-					win = true;
-
-				} else {
-					win = false;
-				}
-				counter = 0;
-			}
-			if (force == true) {
+			} else {
 				win = false;
 			}
-			if (win == false) {
-
-				if (OptionController.getTimerMode() == false
-						&& OptionController.getWinSoundMode()) {
-
-					playAnswer("fail");
-
-				}
-				String answerString = "";
-				for (int j = 0; j < manyNotes; j++) {
-					answerString += Instrument.findNote(answerKey[j]);
-					if (j != 0 || j != manyNotes - 1) {
-						answerString += ", ";
-					}
-				}
-				score = 0;
-				Toast toast = Toast.makeText(this, "Correct Answer: "
-						+ answerString, Toast.LENGTH_SHORT);
-				toast.setGravity(Gravity.CENTER, 0, -30);
-				toast.show();
-				// playNote(notes[i]);
-			}
-			if (win == true) {
-				score++;
-				if (OptionController.getTimerMode() == false
-						&& OptionController.getWinSoundMode()) {
-					playAnswer("win");
-				}
-				Toast toast = Toast.makeText(this, "Correct",
-						Toast.LENGTH_SHORT);
-				toast.setGravity(Gravity.CENTER, 0, -30);
-				toast.show();
-			}
-			populate();
-
+			counter = 0;
 		}
+		if (force == true) {
+			win = false;
+		}
+		if (win == false) {
+
+			if (OptionController.getTimerMode() == false
+					&& OptionController.getWinSoundMode()) {
+
+				playAnswer("fail");
+
+			}
+			String answerString = "";
+			for (int j = 0; j < OptionController.getnumNotes(); j++) {
+				answerString += utilities.getNoteLet(answerKey[j]);
+				if (j != 0 || j != OptionController.getnumNotes() - 1) {
+					answerString += ", ";
+				}
+			}
+			score = 0;
+			Toast toast = Toast.makeText(this, "Correct Answer: "
+					+ answerString, Toast.LENGTH_SHORT);
+			toast.setGravity(Gravity.CENTER, 0, -30);
+			toast.show();
+			// playNote(notes[i]);
+		}
+		if (win == true) {
+			score++;
+			if (OptionController.getTimerMode() == false
+					&& OptionController.getWinSoundMode()) {
+				playAnswer("win");
+			}
+			Toast toast = Toast.makeText(this, "Correct",
+					Toast.LENGTH_SHORT);
+			toast.setGravity(Gravity.CENTER, 0, -30);
+			toast.show();
+		}
+		populate();
 
 	}
 
-	public void play(View v) throws Exception {
-
-		playNote(answerKey[counter]);
-
+	public void play0(View v) throws Exception {
+		playNote(answerKey[0]);
 	}
 
+	public void play1(View v) throws Exception {
+		if (OptionController.getnumNotes() != 1) {
+			playNote(answerKey[1]);
+		}
+	}
+
+	public void play2(View v) throws Exception {
+		if (OptionController.getnumNotes() != 1) {
+			playNote(answerKey[2]);
+		}
+	}
+
+	public void play3(View v) throws Exception {
+		if (OptionController.getnumNotes() != 1) {
+			playNote(answerKey[3]);
+		}
+	}
+	
 	private void changeNote(ImageView iv, int ran, int num) {
 		switch (ran) {
 		case 0: {
@@ -440,35 +471,7 @@ public class LQuizController extends Activity implements
 				String text = (String) btn.getText();
 				// do something with text
 				char charNote = text.charAt(0);
-				int noteNum;
-				switch (charNote) {
-				case 'C':
-					noteNum = 0;
-					break;
-				case 'D':
-					noteNum = 1;
-					break;
-				case 'E':
-					noteNum = 2;
-					break;
-				case 'F':
-					noteNum = 3;
-					break;
-				case 'G':
-					noteNum = 4;
-					break;
-				case 'A':
-					noteNum = 5;
-					break;
-				case 'B':
-					noteNum = 6;
-					break;
-				default:
-					noteNum = 0;
-					break;
-				}
-
-				radioNote = noteNum;
+				radioNote = utilities.getNoteNum(charNote);	
 			}
 
 		}

@@ -25,9 +25,13 @@
 				android:id="@+id/aboutEarTrainer" android:layout_height="wrap_content"
 				android:layout_centerHorizontal="true" android:background="@android:color/transparent"
 				android:textSize="20dip" android:layout_marginTop="30dip" android:onClick="buttonPressed"></Button>
+			<Button android:text="@string/version" android:layout_width="wrap_content"
+				android:id="@+id/aboutVersion" android:layout_height="wrap_content"
+				android:layout_centerHorizontal="true" android:layout_below="@+id/aboutEarTrainer"
+				android:background="@android:color/transparent" android:textSize="20dip" android:layout_marginTop="30dip" android:onClick="buttonPressed"></Button>
 			<Button android:text="Practice" android:layout_width="wrap_content"
 				android:id="@+id/aboutPractice" android:layout_height="wrap_content"
-				android:layout_centerHorizontal="true" android:layout_below="@+id/aboutEarTrainer"
+				android:layout_centerHorizontal="true" android:layout_below="@+id/aboutVersion"
 				android:background="@android:color/transparent" android:textSize="20dip" android:layout_marginTop="30dip" android:onClick="buttonPressed"></Button>
 			<Button android:text="Reading Quiz" android:layout_width="wrap_content"
 				android:id="@+id/aboutRQuiz" android:layout_height="wrap_content"

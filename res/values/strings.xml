@@ -16,12 +16,17 @@
         <item>7 Seconds</item>
         <item>10 Seconds</item>
         <item>15 Seconds</item>
+        
+    </string-array>
+     <string-array name="notes_array">
+        <item>Single Note</item>
+        <item>1 Measure</item>
     </string-array>
     <string-array name="clef_array">
         <item>Treble</item>
         <item>Bass</item>
     </string-array>
-
+	<string name="version">Version 1.11</string>
 	<string name="app_name">EarTrainer</string>
 	<string name="notes">Number of Notes</string>
 	<string name="mode">Mode</string>

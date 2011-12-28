@@ -30,6 +30,7 @@ public class OptionController extends Activity {
 	private static boolean winSoundMode = true;
 	private static String instrument = "Piano";
 	private static String clef = "Treble";
+	private static int numNotes = 1;
 
 	protected void onStart() {
 		super.onStart();
@@ -52,6 +53,31 @@ public class OptionController extends Activity {
 		if (winCB.isChecked() != winSoundMode) {
 			winCB.toggle();
 		}
+		Spinner notesSpinner = (Spinner) findViewById(R.id.spinner4);
+		if (numNotes == 1) {
+			notesSpinner.setSelection(0);
+		} else if (numNotes == 4) {
+			notesSpinner.setSelection(1);
+		}
+
+		if (timerMode = true) {
+			Spinner timerSpinner = (Spinner) findViewById(R.id.spinner2);
+			if (timer == 2 * 1000) {
+				timerSpinner.setSelection(0);
+			}
+			if (timer == 5 * 1000) {
+				timerSpinner.setSelection(1);
+			}
+			if (timer == 7 * 1000) {
+				timerSpinner.setSelection(2);
+			}
+			if (timer == 10 * 1000) {
+				timerSpinner.setSelection(3);
+			}
+			if (timer == 15 * 1000) {
+				timerSpinner.setSelection(4);
+			}
+		}
 
 		Spinner instSpinner = (Spinner) findViewById(R.id.spinner1);
 		Spinner clefSpinner = (Spinner) findViewById(R.id.spinner3);
@@ -59,14 +85,11 @@ public class OptionController extends Activity {
 			clefSpinner.setSelection(0);
 			if (instrument.equals("Piano")) {
 				instSpinner.setSelection(0);
-			}
-			if (instrument.equals("Violin")) {
+			} else if (instrument.equals("Violin")) {
 				instSpinner.setSelection(1);
-			}
-			if (instrument.equals("Guitar")) {
+			} else if (instrument.equals("Guitar")) {
 				instSpinner.setSelection(2);
-			}
-			if (instrument.equals("Trumpet")) {
+			} else if (instrument.equals("Trumpet")) {
 				instSpinner.setSelection(3);
 			}
 		}
@@ -74,8 +97,7 @@ public class OptionController extends Activity {
 			clefSpinner.setSelection(1);
 			if (instrument.equals("Piano")) {
 				instSpinner.setSelection(0);
-			}
-			if (instrument.equals("Cello")) {
+			} else if (instrument.equals("Cello")) {
 				instSpinner.setSelection(1);
 			}
 		}
@@ -177,7 +199,19 @@ public class OptionController extends Activity {
 		timerSpinner.setSelection(2);
 		timerSpinner.setOnItemSelectedListener(new timerSpinnerListener());
 
-		// ==============End Instrument Spinner
+		// ==============End Timer Spinner
+
+		// =================Notes Spinner
+		Spinner notesSpinner = (Spinner) findViewById(R.id.spinner4);
+		ArrayAdapter<CharSequence> notesAdapter = ArrayAdapter
+				.createFromResource(this, R.array.notes_array,
+						android.R.layout.simple_spinner_item);
+		notesAdapter
+				.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+		notesSpinner.setAdapter(notesAdapter);
+		notesSpinner.setOnItemSelectedListener(new notesSpinnerListener());
+
+		// ==============End Timer Spinner
 
 		// ==============Fonts
 		Typeface font = Typeface.createFromAsset(getAssets(), "Fonts/dum1.ttf");
@@ -194,6 +228,8 @@ public class OptionController extends Activity {
 		txt5.setTypeface(font);
 		TextView txt6 = (TextView) findViewById(R.id.textView6);
 		txt6.setTypeface(font);
+		TextView txt7 = (TextView) findViewById(R.id.textView7);
+		txt7.setTypeface(font);
 
 		Button back = (Button) findViewById(R.id.back);
 		back.setTypeface(font);
@@ -228,6 +264,12 @@ public class OptionController extends Activity {
 			mInstance = new OptionController();
 		}
 		return timerMode;
+	}
+
+	public static synchronized int getnumNotes() {
+		// TODO Auto-generated method stub
+
+		return numNotes;
 	}
 
 	public static synchronized String getClef() {
@@ -282,6 +324,17 @@ public class OptionController extends Activity {
 	private static synchronized void setClef(String c) {
 		// TODO Auto-generated method stub
 		clef = c;
+	}
+
+	private static synchronized void setNotes(String string) {
+		// TODO Auto-generated method stub
+		if (string.equals("Single Note")) {
+			numNotes = 1;
+		}
+		if (string.equals("1 Measure")) {
+			numNotes = 4;
+		}
+
 	}
 
 	private static synchronized void setTime(String string) {
@@ -354,6 +407,21 @@ public class OptionController extends Activity {
 
 			setClef(parent.getItemAtPosition(pos).toString());
 			clefChanged();
+		}
+
+		@Override
+		public void onNothingSelected(AdapterView<?> arg0) {
+			// TODO Auto-generated method stub
+
+		}
+	}
+
+	public class notesSpinnerListener implements OnItemSelectedListener {
+
+		public void onItemSelected(AdapterView<?> parent, View view, int pos,
+				long id) {
+
+			setNotes(parent.getItemAtPosition(pos).toString());
 		}
 
 		@Override

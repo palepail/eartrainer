@@ -14,13 +14,11 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
 import android.widget.TextView;
 import android.widget.Toast;
-import com.google.ads.*;
 import android.os.CountDownTimer;
 
 public class RQuizController extends Activity implements
@@ -28,7 +26,6 @@ public class RQuizController extends Activity implements
 	private AudioManager audio;
 	private int radioNote;
 	private int score = 0;
-	private int manyNotes = 1;
 	private int[] answerKey = new int[10];
 	private int[] playerAnswer = new int[10];
 	private int counter = 0;
@@ -45,7 +42,7 @@ public class RQuizController extends Activity implements
 
 		public void onFinish() {
 			try {
-				submit(true);
+				end(true);
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -112,21 +109,18 @@ public class RQuizController extends Activity implements
 
 		RadioGroup radio = (RadioGroup) findViewById(R.id.radioGroup1);
 		radio.setOnCheckedChangeListener(this);
-		
+
 		/*
-		// AdSpace
-		// Create the adView
-		AdView adView = new AdView(this, AdSize.BANNER, "a14e097ecc8d3d9");
-		// Lookup your LinearLayout assuming it’s been given
-		// the attribute android:id="@+id/mainLayout"
-		LinearLayout layout = (LinearLayout) findViewById(R.id.linearLayout1);
-		// Add the adView to it
-		layout.addView(adView);
-		adView.setGravity(Gravity.CENTER_HORIZONTAL | Gravity.BOTTOM);
-		// Initiate a generic request to load it with an ad
-		adView.loadAd(new AdRequest());
-		*/
-		
+		 * // AdSpace // Create the adView AdView adView = new AdView(this,
+		 * AdSize.BANNER, "a14e097ecc8d3d9"); // Lookup your LinearLayout
+		 * assuming it’s been given // the attribute
+		 * android:id="@+id/mainLayout" LinearLayout layout = (LinearLayout)
+		 * findViewById(R.id.linearLayout1); // Add the adView to it
+		 * layout.addView(adView); adView.setGravity(Gravity.CENTER_HORIZONTAL |
+		 * Gravity.BOTTOM); // Initiate a generic request to load it with an ad
+		 * adView.loadAd(new AdRequest());
+		 */
+
 		if (OptionController.getClef().equals("Bass")) {
 			ImageView bar = (ImageView) findViewById(R.id.imageView1);
 			bar.setImageResource(R.drawable.bassblankmeasure);
@@ -147,6 +141,9 @@ public class RQuizController extends Activity implements
 
 		TextView tv = (TextView) findViewById(R.id.textView1);
 		tv.setText("Streak = " + score);
+		TextView tv1 = (TextView) findViewById(R.id.textView2);
+		tv1.setText("");
+
 
 		// TextView nameDisplay = (TextView) findViewById(R.id.textView3);
 		// //Name Display
@@ -160,7 +157,7 @@ public class RQuizController extends Activity implements
 			answerKey[i] = 0;
 			playerAnswer[i] = 99;
 		}
-		switch (manyNotes) {
+		switch (OptionController.getnumNotes()) {
 		case 1:
 			changeNote(iv2, generateRandom(), 0);
 			setRest(iv3);
@@ -203,7 +200,7 @@ public class RQuizController extends Activity implements
 
 				public void onFinish() {
 					try {
-						submit(true);
+						end(true);
 					} catch (Exception e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
@@ -219,72 +216,106 @@ public class RQuizController extends Activity implements
 		}
 	}
 
-	public void submit(boolean force) throws Exception {
-		boolean win = true;
-
+	public void submit(boolean force) throws Exception{
+		
 		playerAnswer[counter] = radioNote;
-		/*
-		 * TextView tv = (TextView) findViewById(R.id.textView2); answerString
-		 * += radioNote + " "; tv.setText(answerString);
-		 */
+		if (OptionController.getnumNotes()!=1)
+		{
+			TextView tv = (TextView) findViewById(R.id.textView2); 
+			String answerString = (String) tv.getText();
+			answerString += utilities.getNoteLet(radioNote) +", ";
+			tv.setText(answerString);
+		}
+		
+		RadioGroup radio = (RadioGroup) findViewById(R.id.radioGroup1);
+		radio.clearCheck();
+		
+		  
 		counter++;
+		
+  
+		if (counter >= OptionController.getnumNotes()) {
+			
+			end(force);
+		}
+	}
+
+	private void end(boolean force) throws Exception {
+		// TODO Auto-generated method stub
+		boolean win = true;
+		counter = 0;
 		if (OptionController.getTimerMode() == true) {
 			timer.cancel();
 		}
+		for (int i = 0; i < OptionController.getnumNotes(); i++) {
+			
+			if (utilities.getNoteLet(answerKey[i]).equals(
+					utilities.getNoteLet(playerAnswer[i]))) {
 
-		if (counter >= manyNotes) {
-			for (int i = 0; i < manyNotes; i++) {
-				if (Instrument.findNote(answerKey[i]).equals(
-						Instrument.findNote(playerAnswer[i]))) {
-
-					win = true;
-
-				} else {
-					win = false;
-				}
-				counter = 0;
-
-			}
-			if (force == true) {
+			} else {
 				win = false;
-			}
-
-			if (win == false) {
-				String answerString = "";
-				if (OptionController.getWinSoundMode() == true) {
-					playAnswer("fail");
-				}
-				for (int j = 0; j < manyNotes; j++) {
-					answerString += Instrument.findNote(answerKey[j]);
-					if (j != 0 || j != manyNotes - 1) {
-						answerString += ", ";
-					}
-				}
-				Toast toast = Toast.makeText(this, "Correct Answer: "
-						+ answerString, Toast.LENGTH_SHORT);
-				toast.setGravity(Gravity.CENTER, 0, -30);
-				toast.show();
-				score = 0;
-			}
-			if (win == true) {
-				score++;
-				if (OptionController.getWinSoundMode() == true) {
-					playAnswer("win");
-				}
-				Toast toast = Toast.makeText(this, "Correct",
-						Toast.LENGTH_SHORT);
-				toast.setGravity(Gravity.CENTER, 0, -30);
-				toast.show();
-
-			}
-			populate();
-
+			}	
+		}
+		if (force == true) {
+			win = false;
 		}
 
+		if (win == false) {                    //what is done on loss
+			String answerString = "";
+			if (OptionController.getWinSoundMode() == true) {
+				playAnswer("fail");
+			}
+			for (int j = 0; j < OptionController.getnumNotes(); j++) {
+				answerString += utilities.getNoteLet(answerKey[j]);
+				if (j != 0 || j != OptionController.getnumNotes() - 1) {
+					answerString += ", ";
+				}
+			}
+			Toast toast = Toast.makeText(this, "Correct Answer: "
+					+ answerString, Toast.LENGTH_SHORT);
+			toast.setGravity(Gravity.CENTER, 0, -30);
+			toast.show();
+			score = 0;
+		}
+		else if (win == true) {                //what is done on win
+			score++;
+			if (OptionController.getWinSoundMode() == true) {
+				playAnswer("win");
+			}
+			Toast toast = Toast.makeText(this, "Correct",
+					Toast.LENGTH_SHORT);
+			toast.setGravity(Gravity.CENTER, 0, -30);
+			toast.show();
+
+		}
+		TextView tv1 = (TextView) findViewById(R.id.textView2);   //reset player answers
+		tv1.setText("");
+		
+		populate();
+
+	}
+	
+
+	public void play0(View v) throws Exception {
+		playNote(answerKey[0]);
 	}
 
-	public void play(View v) throws Exception {
-		playNote(answerKey[counter]);
+	public void play1(View v) throws Exception {
+		if (OptionController.getnumNotes() != 1) {
+			playNote(answerKey[1]);
+		}
+	}
+
+	public void play2(View v) throws Exception {
+		if (OptionController.getnumNotes() != 1) {
+			playNote(answerKey[2]);
+		}
+	}
+
+	public void play3(View v) throws Exception {
+		if (OptionController.getnumNotes() != 1) {
+			playNote(answerKey[3]);
+		}
 	}
 
 	private void changeNote(ImageView iv, int ran, int num) {
@@ -410,35 +441,7 @@ public class RQuizController extends Activity implements
 				String text = (String) btn.getText();
 				// do something with text
 				char charNote = text.charAt(0);
-				int noteNum;
-				switch (charNote) {
-				case 'C':
-					noteNum = 0;
-					break;
-				case 'D':
-					noteNum = 1;
-					break;
-				case 'E':
-					noteNum = 2;
-					break;
-				case 'F':
-					noteNum = 3;
-					break;
-				case 'G':
-					noteNum = 4;
-					break;
-				case 'A':
-					noteNum = 5;
-					break;
-				case 'B':
-					noteNum = 6;
-					break;
-				default:
-					noteNum = 0;
-					break;
-				}
-
-				radioNote = noteNum;
+				radioNote = utilities.getNoteNum(charNote);	
 			}
 
 		}
