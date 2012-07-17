@@ -8,7 +8,7 @@
     </string-array>
     <string-array name="bass_instrument_array">
         <item>Piano</item>
-        <item>Cello</item>
+        <item>Bass</item>
     </string-array>
     <string-array name="timer_array">
         <item>2 Seconds</item>
@@ -26,7 +26,7 @@
         <item>Treble</item>
         <item>Bass</item>
     </string-array>
-	<string name="version">Version 1.11</string>
+	<string name="version">Version 1.12</string>
 	<string name="app_name">EarTrainer</string>
 	<string name="notes">Number of Notes</string>
 	<string name="mode">Mode</string>

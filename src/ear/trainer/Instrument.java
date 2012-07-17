@@ -31,18 +31,26 @@ public class Instrument {
 
 	public static int findOctave(int noteNum) {
 		int octave = 0;
-
-		if (noteNum >= 14) {
-			octave = 6;
-		} else if (noteNum >= 7) {
-			octave = 5;
-		} else if (noteNum >= 0) {
-			octave = 4;
-		}
-
 		if (OptionController.getClef().equals("Bass")) {
-			octave -= 2;
+			if (noteNum >= 12) {
+				octave = 4;
+			} else if (noteNum >= 5) {
+				octave = 3;
+			} else if (noteNum >= 0) {
+				octave = 2;
+			}
 		}
+		else{
+			if (noteNum >= 14) {
+				octave = 6;
+			} else if (noteNum >= 7) {
+				octave = 5;
+			} else if (noteNum >= 0) {
+				octave = 4;
+			}
+		}
+
+		
 
 		return octave;
 	}

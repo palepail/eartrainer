@@ -87,9 +87,14 @@ public class ListenController extends Activity {
 	public void playNote(View v) throws Exception {
 		int noteNum = (int) Integer.parseInt((String) ((Button) v).getText());
 
-		Toast.makeText(this, utilities.getNoteLet(noteNum), Toast.LENGTH_SHORT)
-				.show();
+		{
+			Toast.makeText(this, utilities.getNoteLet(noteNum), Toast.LENGTH_SHORT)
+			.show();
+		}
+			
+		
 		Instrument player = new Instrument();
+		
 		player.playNote(this, noteNum);
 
 	}

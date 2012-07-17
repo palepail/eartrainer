@@ -24,6 +24,7 @@ import android.widget.Spinner;
 public class OptionController extends Activity {
 	private AudioManager audio;
 
+
 	private static OptionController mInstance = null;
 	private static int timer = 7 * 1000;
 	private static boolean timerMode = false;
@@ -45,14 +46,23 @@ public class OptionController extends Activity {
 	protected void onResume() {
 		super.onResume();
 		Log.d("LIFECYCLE", "Options onResume()");
+		
 		CheckBox timerCB = (CheckBox) findViewById(R.id.checkBox1);
 		CheckBox winCB = (CheckBox) findViewById(R.id.checkBox2);
-		if (timerCB.isChecked() != timerMode) {
-			timerCB.toggle();
+		if (!timerMode && timerCB.isChecked()) {
+			timerCB.setChecked(false);
 		}
-		if (winCB.isChecked() != winSoundMode) {
-			winCB.toggle();
+		else if(!timerMode && timerCB.isChecked() )
+		{
+			timerCB.setChecked(true);
 		}
+		if (!winSoundMode && winCB.isChecked()) {
+			winCB.setChecked(false);
+		}
+		else if (winSoundMode && !winCB.isChecked()) {
+			winCB.setChecked(true);
+		}
+		
 		Spinner notesSpinner = (Spinner) findViewById(R.id.spinner4);
 		if (numNotes == 1) {
 			notesSpinner.setSelection(0);
@@ -97,7 +107,7 @@ public class OptionController extends Activity {
 			clefSpinner.setSelection(1);
 			if (instrument.equals("Piano")) {
 				instSpinner.setSelection(0);
-			} else if (instrument.equals("Cello")) {
+			} else if (instrument.equals("Bass")) {
 				instSpinner.setSelection(1);
 			}
 		}

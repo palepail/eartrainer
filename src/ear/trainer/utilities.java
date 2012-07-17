@@ -246,6 +246,8 @@ public class utilities extends Activity {
 	public static int getNoteNum(char charNote) {
 		// TODO Auto-generated method stub
 		int noteNum;
+		
+		
 		switch (charNote) {
 		case 'C':
 			noteNum = 0;
@@ -272,6 +274,8 @@ public class utilities extends Activity {
 			noteNum = 0;
 			break;
 		}
+		
+		
 		return noteNum;
 
 	}
@@ -279,7 +283,17 @@ public class utilities extends Activity {
 	public static String getNoteLet(int charNum) {
 		String noteLet;
 		int Num = charNum % 7;
+
+		if (OptionController.getClef().equals("Bass")) {
+			Num += 2;
+		}
 		switch (Num) {
+		case -2:
+			noteLet = "A";
+			break;
+		case -1:
+			noteLet = "B";
+			break;
 		case 0:
 			noteLet = "C";
 			break;
@@ -301,6 +315,13 @@ public class utilities extends Activity {
 		case 6:
 			noteLet = "B";
 			break;
+		case 7:
+			noteLet = "C";
+			break;
+		case 8:
+			noteLet = "D";
+			break;
+			
 		default:
 			noteLet = "C";
 			break;
