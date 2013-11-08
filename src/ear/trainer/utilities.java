@@ -132,8 +132,8 @@ public class utilities extends Activity {
 		builder.setMessage(
 				"The Practice mode is where you can listen to and view notes "
 						+ "at at your leisure. There is no goal other than to give you a feel for "
-						+ "what notes go where and what the sound like. Press a note ont he measure "
-						+ "to listen to it and view what not it is. "
+						+ "what notes go where and what they sound like. Press a note on the measure "
+						+ "to listen to it and view what note it is. "
 						+ "You can scroll horizontally to view more notes.")
 				.setCancelable(false)
 				.setNeutralButton("OK", new DialogInterface.OnClickListener() {
@@ -145,11 +145,12 @@ public class utilities extends Activity {
 	}
 	public static void aboutVersion(Context context) {
 		AlertDialog.Builder builder = new AlertDialog.Builder(context);
-		builder.setTitle("About Version 1.11");
+		builder.setTitle("About Version 1.15");
 		builder.setMessage(
-				"Version 1.11 sees the introduction of measures in Ear Trainer. By selecting 1 Measure in the options menu," +
-				"the use must correctly identify 4 notes in order to get the question correct. The notes currently selected are" +
-				"displayed in the top right corner of the screen.")
+				"Version 1.15 includes changes to the buttons used to answer quizes and the position " +
+				"of results messages. There are also a few corrections to spelling and grammar in the" +
+				" 'About Practice.' The buttons have been changed from radio buttons to standard buttons. " +
+				"This aliviates having the name of the note beside the button rather than on it.")
 				.setCancelable(false)
 				.setNeutralButton("OK", new DialogInterface.OnClickListener() {
 					public void onClick(DialogInterface dialog, int id) {
@@ -287,6 +288,53 @@ public class utilities extends Activity {
 		if (OptionController.getClef().equals("Bass")) {
 			Num += 2;
 		}
+		switch (Num) {
+		case -2:
+			noteLet = "A";
+			break;
+		case -1:
+			noteLet = "B";
+			break;
+		case 0:
+			noteLet = "C";
+			break;
+		case 1:
+			noteLet = "D";
+			break;
+		case 2:
+			noteLet = "E";
+			break;
+		case 3:
+			noteLet = "F";
+			break;
+		case 4:
+			noteLet = "G";
+			break;
+		case 5:
+			noteLet = "A";
+			break;
+		case 6:
+			noteLet = "B";
+			break;
+		case 7:
+			noteLet = "C";
+			break;
+		case 8:
+			noteLet = "D";
+			break;
+			
+		default:
+			noteLet = "C";
+			break;
+		}
+		return noteLet;
+
+	}
+	
+	public static String getNoteLetAnswer(int charNum) {
+		String noteLet;
+		int Num = charNum % 7;
+
 		switch (Num) {
 		case -2:
 			noteLet = "A";

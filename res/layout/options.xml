@@ -9,7 +9,7 @@
 	<TextView android:text="Options" android:id="@+id/textView1"
 		android:layout_width="wrap_content" android:layout_height="wrap_content"
 		android:gravity="center" android:layout_gravity="center|top"
-		android:layout_marginTop="15dip" android:textSize="30dip"
+		android:layout_marginTop="15dip" android:textSize="30sp"
 		android:textColor="#000" android:layout_centerHorizontal="true"></TextView>
 	<ScrollView android:layout_width="wrap_content"
 		android:layout_height="wrap_content" android:id="@+id/scrollView1"
@@ -29,7 +29,7 @@
 				android:layout_height="wrap_content"
 				android:layout_centerHorizontal="true"></Button>
 			<TextView android:id="@+id/textView2" android:layout_width="wrap_content"
-				android:textSize="20dip" android:layout_marginTop="40dip"
+				android:textSize="20sp" android:layout_marginTop="40dip"
 				android:text="Instrument: " android:textColor="#000"
 				android:layout_marginRight="30dip" android:layout_height="wrap_content"
 				android:layout_toLeftOf="@+id/optionAnchor"></TextView>
@@ -38,7 +38,7 @@
 				android:layout_width="wrap_content" android:layout_height="wrap_content"
 				android:layout_alignBottom="@+id/textView2"></Spinner>
 				<TextView android:id="@+id/textView6" android:layout_width="wrap_content"
-				android:textSize="20dip" android:layout_marginTop="30dip" android:layout_below="@+id/textView2"
+				android:textSize="20sp" android:layout_marginTop="30dip" android:layout_below="@+id/textView2"
 				android:text="Clef: " android:textColor="#000"
 				android:layout_marginRight="30dip" android:layout_height="wrap_content"
 				android:layout_toLeftOf="@+id/optionAnchor"></TextView>
@@ -48,7 +48,7 @@
 				android:layout_alignBottom="@+id/textView6"></Spinner>
 			
 			<TextView android:id="@+id/textView3" android:layout_width="wrap_content"
-				android:textSize="20dip" android:layout_marginTop="30dip"
+				android:textSize="20sp" android:layout_marginTop="30dip"
 				android:text="Timed Mode: " android:textColor="#000"
 				android:layout_marginRight="30dip" android:layout_height="wrap_content"
 				android:layout_below="@+id/textView6" android:layout_toLeftOf="@+id/optionAnchor"></TextView>
@@ -57,7 +57,7 @@
 				android:layout_marginLeft="30dip" android:id="@+id/checkBox1"
 				android:layout_toRightOf="@+id/optionAnchor" android:layout_height="wrap_content"></CheckBox>
 			<TextView android:id="@+id/textView4" android:layout_width="wrap_content"
-				android:textSize="20dip" android:layout_marginTop="30dip"
+				android:textSize="20sp" android:layout_marginTop="30dip"
 				android:text="Timer Length: " android:textColor="#000"
 				android:layout_marginRight="30dip" android:layout_height="wrap_content"
 				android:layout_below="@+id/textView3" android:layout_toLeftOf="@+id/optionAnchor"></TextView>
@@ -66,7 +66,7 @@
 				android:layout_width="wrap_content" android:layout_height="wrap_content"
 				android:layout_alignBottom="@+id/textView4"></Spinner>
 			<TextView android:id="@+id/textView5" android:layout_width="wrap_content"
-				android:textSize="20dip" android:layout_marginTop="30dip"
+				android:textSize="20sp" android:layout_marginTop="30dip"
 				android:text="Result Sound: " android:textColor="#000"
 				android:layout_marginRight="30dip" android:layout_height="wrap_content"
 				android:layout_below="@+id/textView4" android:layout_toLeftOf="@+id/optionAnchor"></TextView>
@@ -78,7 +78,7 @@
 			    android:layout_alignLeft="@+id/spinner4" />
 			
 			<TextView android:id="@+id/textView7" android:layout_width="wrap_content"
-				android:textSize="20dip" android:layout_marginTop="30dip"
+				android:textSize="20sp" android:layout_marginTop="30dip"
 				android:text="Number of Notes: " android:textColor="#000"
 				android:layout_marginRight="30dip" android:layout_height="wrap_content"
 				android:layout_below="@+id/textView5" android:layout_toLeftOf="@+id/optionAnchor"></TextView>
@@ -92,7 +92,7 @@
 				android:background="@android:color/transparent"
 				android:layout_marginLeft="60dip" android:layout_toRightOf="@+id/optionAnchor"
 				android:layout_height="wrap_content" android:onClick="buttonPressed"
-				android:textSize="20dip"></Button>
+				android:textSize="20sp"></Button>
 
 			
 		</RelativeLayout>

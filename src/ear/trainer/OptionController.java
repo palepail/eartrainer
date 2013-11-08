@@ -49,18 +49,23 @@ public class OptionController extends Activity {
 		
 		CheckBox timerCB = (CheckBox) findViewById(R.id.checkBox1);
 		CheckBox winCB = (CheckBox) findViewById(R.id.checkBox2);
-		if (!timerMode && timerCB.isChecked()) {
-			timerCB.setChecked(false);
+		if (timerMode && !timerCB.isChecked()) {
+			timerCB.setChecked(true);
+			timerMode=true;
 		}
 		else if(!timerMode && timerCB.isChecked() )
 		{
-			timerCB.setChecked(true);
+			timerCB.setChecked(false);
+			timerMode=false;
 		}
+		
 		if (!winSoundMode && winCB.isChecked()) {
 			winCB.setChecked(false);
+			winSoundMode=false;
 		}
 		else if (winSoundMode && !winCB.isChecked()) {
 			winCB.setChecked(true);
+			winSoundMode=true;
 		}
 		
 		Spinner notesSpinner = (Spinner) findViewById(R.id.spinner4);
@@ -70,7 +75,7 @@ public class OptionController extends Activity {
 			notesSpinner.setSelection(1);
 		}
 
-		if (timerMode = true) {
+		if (timerMode == true) {
 			Spinner timerSpinner = (Spinner) findViewById(R.id.spinner2);
 			if (timer == 2 * 1000) {
 				timerSpinner.setSelection(0);
@@ -142,7 +147,6 @@ public class OptionController extends Activity {
 
 		cb.setOnCheckedChangeListener(new OnCheckedChangeListener() {
 
-			@Override
 			public void onCheckedChanged(CompoundButton buttonView,
 					boolean isChecked) {
 				// TODO Auto-generated method stub
@@ -160,7 +164,6 @@ public class OptionController extends Activity {
 
 		cb1.setOnCheckedChangeListener(new OnCheckedChangeListener() {
 
-			@Override
 			public void onCheckedChanged(CompoundButton buttonView,
 					boolean isChecked) {
 				// TODO Auto-generated method stub
@@ -389,7 +392,6 @@ public class OptionController extends Activity {
 
 		}
 
-		@Override
 		public void onNothingSelected(AdapterView<?> arg0) {
 			// TODO Auto-generated method stub
 
@@ -403,7 +405,6 @@ public class OptionController extends Activity {
 			setTime(parent.getItemAtPosition(pos).toString());
 		}
 
-		@Override
 		public void onNothingSelected(AdapterView<?> arg0) {
 			// TODO Auto-generated method stub
 
@@ -419,7 +420,6 @@ public class OptionController extends Activity {
 			clefChanged();
 		}
 
-		@Override
 		public void onNothingSelected(AdapterView<?> arg0) {
 			// TODO Auto-generated method stub
 
@@ -434,7 +434,6 @@ public class OptionController extends Activity {
 			setNotes(parent.getItemAtPosition(pos).toString());
 		}
 
-		@Override
 		public void onNothingSelected(AdapterView<?> arg0) {
 			// TODO Auto-generated method stub
 

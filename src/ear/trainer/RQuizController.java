@@ -14,17 +14,12 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
-import android.widget.RadioGroup.OnCheckedChangeListener;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.os.CountDownTimer;
 
-public class RQuizController extends Activity implements
-		OnCheckedChangeListener {
+public class RQuizController extends Activity {
 	private AudioManager audio;
-	private int radioNote;
 	private int score = 0;
 	private int[] answerKey = new int[10];
 	private int[] playerAnswer = new int[10];
@@ -107,19 +102,6 @@ public class RQuizController extends Activity implements
 
 		audio = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
 
-		RadioGroup radio = (RadioGroup) findViewById(R.id.radioGroup1);
-		radio.setOnCheckedChangeListener(this);
-
-		/*
-		 * // AdSpace // Create the adView AdView adView = new AdView(this,
-		 * AdSize.BANNER, "a14e097ecc8d3d9"); // Lookup your LinearLayout
-		 * assuming it’s been given // the attribute
-		 * android:id="@+id/mainLayout" LinearLayout layout = (LinearLayout)
-		 * findViewById(R.id.linearLayout1); // Add the adView to it
-		 * layout.addView(adView); adView.setGravity(Gravity.CENTER_HORIZONTAL |
-		 * Gravity.BOTTOM); // Initiate a generic request to load it with an ad
-		 * adView.loadAd(new AdRequest());
-		 */
 
 		if (OptionController.getClef().equals("Bass")) {
 			ImageView bar = (ImageView) findViewById(R.id.imageView1);
@@ -184,8 +166,6 @@ public class RQuizController extends Activity implements
 			break;
 		}
 
-		RadioGroup radio = (RadioGroup) findViewById(R.id.radioGroup1);
-		radio.check(-1);
 
 		if (OptionController.getTimerMode() == true) {
 			timer = new CountDownTimer(OptionController.getSeconds(), 1000) {
@@ -207,7 +187,6 @@ public class RQuizController extends Activity implements
 					}
 				}
 			};
-
 			timer.start();
 		} else {
 			timer.cancel();
@@ -216,19 +195,18 @@ public class RQuizController extends Activity implements
 		}
 	}
 
-	public void submit(boolean force) throws Exception{
+	public void submit(boolean force, int noteNum) throws Exception{
 		
-		playerAnswer[counter] = radioNote;
+		playerAnswer[counter] = noteNum;
 		if (OptionController.getnumNotes()!=1)
 		{
 			TextView tv = (TextView) findViewById(R.id.textView2); 
 			String answerString = (String) tv.getText();
-			answerString += utilities.getNoteLet(radioNote) +", ";
+			answerString += utilities.getNoteLet(noteNum) +", ";
 			tv.setText(answerString);
 		}
 		
-		RadioGroup radio = (RadioGroup) findViewById(R.id.radioGroup1);
-		radio.clearCheck();
+
 		
 		  
 		counter++;
@@ -250,7 +228,7 @@ public class RQuizController extends Activity implements
 		for (int i = 0; i < OptionController.getnumNotes(); i++) {
 			
 			if (utilities.getNoteLet(answerKey[i]).equals(
-					utilities.getNoteLet(playerAnswer[i]))) {
+					utilities.getNoteLetAnswer(playerAnswer[i]))) {
 
 			} else {
 				win = false;
@@ -273,7 +251,7 @@ public class RQuizController extends Activity implements
 			}
 			Toast toast = Toast.makeText(this, "Correct Answer: "
 					+ answerString, Toast.LENGTH_SHORT);
-			toast.setGravity(Gravity.CENTER, 0, -30);
+			toast.setGravity(Gravity.TOP|Gravity.CENTER, 0, 25);
 			toast.show();
 			score = 0;
 		}
@@ -284,7 +262,7 @@ public class RQuizController extends Activity implements
 			}
 			Toast toast = Toast.makeText(this, "Correct",
 					Toast.LENGTH_SHORT);
-			toast.setGravity(Gravity.CENTER, 0, -30);
+			toast.setGravity(Gravity.TOP|Gravity.CENTER, 0, 25);
 			toast.show();
 
 		}
@@ -321,7 +299,6 @@ public class RQuizController extends Activity implements
 	private void changeNote(ImageView iv, int ran, int num) {
 		switch (ran) {
 		case 0: {
-
 			answerKey[num] = 0;
 			iv.setImageResource(R.drawable.lc);
 			break;
@@ -432,29 +409,31 @@ public class RQuizController extends Activity implements
 		}
 	}
 
-	@Override
-	public void onCheckedChanged(RadioGroup group, int checkedId) {
-
-		for (int i = 0; i < group.getChildCount(); i++) {
-			RadioButton btn = (RadioButton) group.getChildAt(i);
-			if (btn.getId() == checkedId) {
-				String text = (String) btn.getText();
-				// do something with text
-				char charNote = text.charAt(0);
-				radioNote = utilities.getNoteNum(charNote);	
-			}
-
-		}
-		if (group.getCheckedRadioButtonId() != -1) {
-			try {
-				submit(false);
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
-
+	public void pickA(View v) throws Exception {
+		submit(false,utilities.getNoteNum('A'));
 	}
+
+	public void pickB(View v) throws Exception {
+		submit(false,utilities.getNoteNum('B'));
+	}
+
+	public void pickC(View v) throws Exception {
+		submit(false,utilities.getNoteNum('C'));
+	}
+
+	public void pickD(View v) throws Exception {
+		submit(false,utilities.getNoteNum('D'));
+	}
+	public void pickE(View v) throws Exception {
+		submit(false,utilities.getNoteNum('E'));
+	}
+	public void pickF(View v) throws Exception {
+		submit(false,utilities.getNoteNum('F'));
+	}
+	public void pickG(View v) throws Exception {
+		submit(false,utilities.getNoteNum('G'));
+	}
+	
 
 	// =======================Menus====================
 	@Override
